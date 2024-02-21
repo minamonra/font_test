@@ -59,6 +59,7 @@
     </folder>
     <folder Name="Source Files">
       <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
+      <file file_name="consolas_22_font.h" />
       <file file_name="main.c" />
       <file file_name="myfont.h" />
     </folder>

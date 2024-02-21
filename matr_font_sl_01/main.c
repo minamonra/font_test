@@ -8,8 +8,7 @@ int main(void)
   unsigned char Charcode = 48 /* смотрит на 0 */;
 
   // Доступ к offset через Charcode
-  offset = inconsola24x32index[Charcode].offset;
-
+  offset = InconsolaNum24x32index[Charcode];
 
   do // do main 
   { 
