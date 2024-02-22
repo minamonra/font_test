@@ -4,12 +4,12 @@
 #include "myfont.h"
 //#include "consolas_22_font.h"
 
-void print_char_temp(unsigned char CH,
-                unsigned char X, unsigned char Y, 
-                unsigned char SymbolWidth, 
-                unsigned char MatrixLength,
-                const unsigned char font[], 
-                const unsigned int index[]) 
+void print_char_temp(unsigned char CH,            // символ который выводим
+                unsigned char X, unsigned char Y, // координаты
+                unsigned char SymbolWidth,        // ширина символа
+                unsigned char MatrixLength,       // длина матрицы символа
+                const unsigned char font[],       // шрифт
+                const unsigned int index[])       // индексный массив шрифта
 {
   unsigned char MatrixByte;   // временная для обработки байта матрицы
   unsigned char BitMask;      // маска, накладываемая на байт для получения значения одного бита
