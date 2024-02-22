@@ -2,32 +2,31 @@
 #include <stdlib.h>
 #include <stm32f0xx.h>
 #include "myfont.h"
-#include "consolas_22_font.h"
+//#include "consolas_22_font.h"
 
-
-void print_char(unsigned char CH,
-                uint8_t X, uint8_t Y, 
+void print_char_temp(unsigned char CH,
+                unsigned char X, unsigned char Y, 
                 unsigned char SymbolWidth, 
                 unsigned char MatrixLength,
                 const unsigned char font[], 
                 const unsigned int index[]) 
 {
-  unsigned char MatrixByte; // временная для обработки байта матрицы
-  unsigned char BitMask;    // маска, накладываемая на байт для получения значения одного бита
-  unsigned char BitWidth;   // счётчик выведенных по горизонтали точек
-  const unsigned char *MatrixPointer = font;//InconsolaNum24x32;
-  BitWidth = SymbolWidth;   // начальная установка счётчика
-  MatrixPointer += index[CH];//InconsolaNum24x32index[CH];  // перемещаем указатель на начало символа CH
+  unsigned char MatrixByte;   // временная для обработки байта матрицы
+  unsigned char BitMask;      // маска, накладываемая на байт для получения значения одного бита
+  unsigned char BitWidth;     // счётчик выведенных по горизонтали точек
+  const unsigned char *MatrixPointer = font;
+  BitWidth = SymbolWidth;     // начальная установка счётчика
+  MatrixPointer += index[CH]; // перемещаем указатель на начало символа CH
 
   // начало алгоритма вывода. Вывод без поворота
   // x матрицы = x символа (ширина)
   // y матрицы = y символа (высота)
 
   do {
-    MatrixByte = *MatrixPointer;       // чтение очередного байта матрицы
-    MatrixPointer = MatrixPointer + 1; // после чтения передвинем указатель на следующий байт матрицы
-    MatrixLength = MatrixLength - 1;   // можно писать просто MatrixLength--; но мне так не нравится...
-    BitMask = 0b10000000;              // предустановка маски и ширины символа на начало для каждого прочитанного байта
+    MatrixByte    = *MatrixPointer;     // чтение очередного байта матрицы
+    MatrixPointer =  MatrixPointer + 1; // после чтения передвинем указатель на следующий байт матрицы
+    MatrixLength  =  MatrixLength - 1;  // можно писать просто MatrixLength--; но мне так не нравится...
+    BitMask       =  0b10000000;        // предустановка маски и ширины символа на начало для каждого прочитанного байта
 
     do {
       if ((MatrixByte & BitMask) > 0) {
@@ -54,7 +53,7 @@ int main(void)
   { 
     // InconsolaNum24x32 массив битмапов символов
     // InconsolaNum24x32index его игдексы
-    print_char('8', 0, 0, 24, 96, InconsolaNum24x32, InconsolaNum24x32index);
+    print_char_temp('8', 0, 0, 24, 96, InconsolaNum24x32, InconsolaNum24x32index);
   } while (1); // main do
 }
 
