@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stm32f0xx.h>
 #include "main.h"
 #include "myfont.h"
 #include "lcd7735sl.h"
@@ -12,8 +9,8 @@ void print_char_temp(unsigned char CH,            // символ который
                 unsigned char MatrixLength,       // длина матрицы символа
                 const unsigned char font[],       // шрифт
                 const unsigned int index[],       // индексный массив шрифта
-                unsigned int fcolor,
-                unsigned int bcolor)
+                unsigned int fcolor,              // цвет шрифта
+                unsigned int bcolor)              // цвет фона
 {
   unsigned char MatrixByte;   // временная для обработки байта матрицы
   unsigned char BitMask;      // маска, накладываемая на байт для получения значения одного бита
@@ -30,6 +27,7 @@ void print_char_temp(unsigned char CH,            // символ который
   lcd7735_sendCmd(0x2C);
   SPI2SIXTEEN; // SPI в 16 бит
   DC_UP;
+  
   do {
     MatrixByte    = *MatrixPointer;     // чтение очередного байта матрицы
     MatrixPointer =  MatrixPointer + 1; // после чтения передвинем указатель на следующий байт матрицы
@@ -41,19 +39,16 @@ void print_char_temp(unsigned char CH,            // символ который
       else                            SPI1->DR = bcolor; // вывод в поток точки цвета фона
       BitMask  = BitMask >> 1; // как только бит выедет вправо, BitMask станет равен 0. Значит, вывели все 8 битов в поток
       BitWidth = BitWidth - 1; // как только значение станет равным 0. Значит, все биты строки вывели в поток
-
     } while ((BitWidth > 0) && (BitMask > 0)); // если хоть что-то стало 0, надо читать следующий байт - выходим из этого цикла
     if (BitWidth == 0) BitWidth = SymbolWidth; // если выход был по окончании вывода строки - снова предустановим счётчик
                                                // один раз на символ предустановка лишняя, но организовывать проверку
                                                // окажется много дороже, чем один лишний раз присвоить значение
   } while (MatrixLength > 0);
+  // закончили
   while (!(SPI1->SR & SPI_SR_TXE) || (SPI1->SR & SPI_SR_BSY)) {};
   CS_UP;
   SPI2EIGHT;
 }
-
-#define FCH CBLACK
-#define BCH CWHITE0
 
 int main(void) 
 {
