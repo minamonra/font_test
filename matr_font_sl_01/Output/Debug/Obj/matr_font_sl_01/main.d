@@ -14,5 +14,4 @@ Output/Debug/Obj/matr_font_sl_01/main.o: \
   X:\_github\font_test\matr_font_sl_01\CMSIS_5\CMSIS\Core\Include\cmsis_compiler.h \
   X:\_github\font_test\matr_font_sl_01\CMSIS_5\CMSIS\Core\Include\cmsis_gcc.h \
   X:\_github\font_test\matr_font_sl_01\STM32F0xx\Device\Include\system_stm32f0xx.h \
-  X:\_github\font_test\matr_font_sl_01\myfont.h \
-  X:\_github\font_test\matr_font_sl_01\consolas_22_font.h
+  X:\_github\font_test\matr_font_sl_01\myfont.h
