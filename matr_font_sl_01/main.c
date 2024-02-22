@@ -48,7 +48,7 @@ void print_char_temp(unsigned char CH,            // символ который
   while (!(SPI1->SR & SPI_SR_TXE) || (SPI1->SR & SPI_SR_BSY)) {};
   CS_UP;
   SPI2EIGHT;
-}
+} // print_char_temp
 
 int main(void) 
 {
