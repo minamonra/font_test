@@ -8,7 +8,7 @@
 #*.bak
 # игнор всех директорий с именем -backups (авто бэкапы кикада)
 *-backups/
-matr_font_sl_01/Output/
+**/*/Output/
 
 *.log
 **/*.log
