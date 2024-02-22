@@ -1,5 +1,6 @@
 "Output/Debug/Obj/matr_font_sl_01/system_stm32f0xx.o"
 "Output/Debug/Obj/matr_font_sl_01/main.o"
+"Output/Debug/Obj/matr_font_sl_01/lcd7735sl.o"
 "Output/Debug/Obj/matr_font_sl_01/SEGGER_THUMB_Startup.o"
 "Output/Debug/Obj/matr_font_sl_01/stm32f031x6_Vectors.o"
 "Output/Debug/Obj/matr_font_sl_01/STM32F0xx_Startup.o"
