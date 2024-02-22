@@ -25,7 +25,7 @@ void print_char_temp(unsigned char CH,            // символ который
   do {
     MatrixByte    = *MatrixPointer;     // чтение очередного байта матрицы
     MatrixPointer =  MatrixPointer + 1; // после чтения передвинем указатель на следующий байт матрицы
-    MatrixLength  =  MatrixLength - 1;  // можно писать просто MatrixLength--; но мне так не нравится...
+    MatrixLength  =  MatrixLength  - 1; // можно писать просто MatrixLength--; но мне так не нравится...
     BitMask       =  0b10000000;        // предустановка маски и ширины символа на начало для каждого прочитанного байта
 
     do {
