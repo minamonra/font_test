@@ -63,6 +63,7 @@
       <file file_name="lcd7735sl.c" />
       <file file_name="lcd7735sl.h" />
       <file file_name="main.c" />
+      <file file_name="main.h" />
       <file file_name="myfont.h" />
     </folder>
     <folder Name="System Files">

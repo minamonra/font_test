@@ -64,6 +64,7 @@
 #define CMAGENTA 0xF81F //- пурпурный - MAGENTA
 #define CRUBY    0x30ba //- рубин - ruby
 #define CPURPLE  0xC05E //- фиолетовый - purple
+#define CORANGE  0xFC00
                  
 void lcd7735_init(uint16_t color); // инициализация дисплея
 void lcd7735_sendCmd(unsigned char cmd); // отправка команды на дисплей
