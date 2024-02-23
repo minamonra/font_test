@@ -75,4 +75,8 @@ void lcd7735_putpix(unsigned char x, unsigned char y, unsigned int Color); // в
 void lcd7735_line(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2, unsigned int color); // вывод линии
 void lcd7735_rect(char x1,char y1,char x2,char y2, unsigned int color); // рисование прямоугольника (не заполненного)
 
+#define PORTRAIT  0x00
+#define LANDSCAPE 0x01
+
+void st7735init(unsigned int orientation, unsigned int color) ;
 #endif // __LCD_ST7735SL__

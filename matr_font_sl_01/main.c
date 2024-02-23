@@ -58,17 +58,18 @@ int main(void)
   gpio_init();
   spi_init();
   delay_ms(10);
-  lcd7735_init(CBLUE0);
-  unsigned char x = 32;
+  //lcd7735_init(CBLUE0);
+  st7735init(LANDSCAPE, CBLUE0);
+  unsigned char x = 46;
   do // do main 
   { 
     if (count > ttms || ttms - count > 1000) {
-      //print_char_temp(x, 20, 30, 24, 32, 96, InconsolaNum24x32, InconsolaNum24x32index, CORANGE, CBLACK); 
-      //print_char_temp(x, 20+24, 30, 24, 32, 96, InconsolaNum24x32, InconsolaNum24x32index, CBLACK, CWHITE0); 
+      print_char_temp(x, 20, 30, 24, 32, 96, InconsolaNum24x32, InconsolaNum24x32index, CORANGE, CBLACK); 
+      print_char_temp(x, 20+24, 30, 24, 32, 96, InconsolaNum24x32, InconsolaNum24x32index, CBLACK, CWHITE0); 
 
-      print_char_temp(x, 0, 0, 18, 35, 90, font_consolas_22, consolas22index, CORANGE, CBLACK);
+      //print_char_temp(x, 0, 0, 18, 35, 90, font_consolas_22, consolas22index, CORANGE, CBLACK);
       count = ttms;
-      x++; if (x > 253) x = 32;
+      x++; if (x > 58) x = 46;
     }
   } while (1); // main do
 } // main
