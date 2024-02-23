@@ -1,6 +1,7 @@
 #include "main.h"
 #include "myfont.h"
 #include "lcd7735sl.h"
+#include "consolas_22_font.h"
 
 void print_char_temp(unsigned char CH,            // символ который выводим
                 unsigned char X, unsigned char Y, // координаты
@@ -58,14 +59,16 @@ int main(void)
   spi_init();
   delay_ms(10);
   lcd7735_init(CBLUE0);
-  unsigned char x = 46;
+  unsigned char x = 32;
   do // do main 
   { 
     if (count > ttms || ttms - count > 1000) {
-      print_char_temp(x, 20, 30, 24, 32, 96, InconsolaNum24x32, InconsolaNum24x32index, CORANGE, CBLACK); 
-      print_char_temp(x, 20+24, 30, 24, 32, 96, InconsolaNum24x32, InconsolaNum24x32index, CBLACK, CWHITE0); 
+      //print_char_temp(x, 20, 30, 24, 32, 96, InconsolaNum24x32, InconsolaNum24x32index, CORANGE, CBLACK); 
+      //print_char_temp(x, 20+24, 30, 24, 32, 96, InconsolaNum24x32, InconsolaNum24x32index, CBLACK, CWHITE0); 
+
+      print_char_temp(x, 0, 0, 18, 35, 90, font_consolas_22, consolas22index, CORANGE, CBLACK);
       count = ttms;
-      x++; if (x > 58) x = 46;
+      x++; if (x > 253) x = 32;
     }
   } while (1); // main do
 } // main
