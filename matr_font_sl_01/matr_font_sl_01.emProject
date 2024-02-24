@@ -60,12 +60,15 @@
     </folder>
     <folder Name="Source Files">
       <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
+      <file file_name="Arial_round_16x24.h" />
       <file file_name="consolas_22_font.h" />
       <file file_name="lcd7735sl.c" />
       <file file_name="lcd7735sl.h" />
       <file file_name="main.c" />
       <file file_name="main.h" />
       <file file_name="myfont.h" />
+      <file file_name="SixteenSegment16x24.h" />
+      <file file_name="ss16x24num.h" />
       <file file_name="ubuntunums.h" />
     </folder>
     <folder Name="System Files">
