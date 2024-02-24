@@ -5,7 +5,7 @@
 #include "stm32f0xx.h"
 
 #define LCD_SOFT_RST_DELAY 120  // пауза после программного сброса дисплея по даташиту пауза должна быть 120 мс
-#define LCD_RST_DLY        010	// пауза в мс при сбросе дисплея, по даташиту должно быть 120 мс, но зачастую работает и 10 мс
+#define ST7735DLY          010	// пауза в мс при сбросе дисплея, по даташиту должно быть 120 мс, но зачастую работает и 10 мс
 // ОПРЕДЕЛЕНИЕ ПОРЯДКА КОДИРОВАНИЯ ЦВЕТА
 // если закоментировать параметр ниже, то порядок кодирования будет 5B - 6G - 5R
 //#define RGB                                   // цвета кодируются 5R - 6G - 5B
@@ -66,17 +66,30 @@
 #define CPURPLE  0xC05E //- фиолетовый - purple
 #define CORANGE  0xFC00
                  
-void lcd7735_init(uint16_t color); // инициализация дисплея
-void lcd7735_sendCmd(unsigned char cmd); // отправка команды на дисплей
-void lcd7735_sendData(unsigned char data) ;
-void lcd7735_at(unsigned char startX, unsigned char startY, unsigned char stopX, unsigned char stopY);
-void lcd7735_fillrect(unsigned char startX, unsigned char startY, unsigned char stopX, unsigned char stopY, unsigned int color); // заполнение прямоугольной области экрана
-void lcd7735_putpix(unsigned char x, unsigned char y, unsigned int Color); // вывод пиксела
-void lcd7735_line(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2, unsigned int color); // вывод линии
-void lcd7735_rect(char x1,char y1,char x2,char y2, unsigned int color); // рисование прямоугольника (не заполненного)
+// NEW ================================================ //
 
+#define COMM      0x00
+#define DATA      0x01
 #define PORTRAIT  0x00
 #define LANDSCAPE 0x01
 
-void st7735init(unsigned int orientation, unsigned int color) ;
+// определение области экрана для заполнения
+void st7735setwin(unsigned char startX, unsigned char startY, unsigned char stopX, unsigned char stopY);
+void st7735init(unsigned int orientation, unsigned int color);
+// вывод пиксела
+void lcd7735pixel(unsigned char X, unsigned char Y, unsigned int color);
+// процедура заполнения прямоугольной области экрана заданным цветом
+void st7735fillrect(unsigned char startX, unsigned char startY, unsigned char stopX, unsigned char stopY, unsigned int color);
+// процедура рисования линии
+void st7735line(unsigned char x1, unsigned char y1, unsigned char x2, unsigned char y2, unsigned int color);
+void print_char_sl(unsigned char CH,            // символ который выводим
+                unsigned char X, unsigned char Y, // координаты
+                unsigned char SymbolWidth,        // ширина символа
+                unsigned char SymbolHeight,       // высота символа
+                unsigned char MatrixLength,       // длина матрицы символа
+                const unsigned char font[],       // шрифт
+                const unsigned int index[],       // индексный массив шрифта
+                unsigned int fcolor,              // цвет шрифта
+                unsigned int bcolor);             // цвет фона
+
 #endif // __LCD_ST7735SL__
