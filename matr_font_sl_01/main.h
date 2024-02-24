@@ -79,4 +79,44 @@ void spi_init(void)
   SPI1->CR1 |= SPI_CR1_SPE; // Go
 }
 
+
+//Index 1==0b0001 => 0b1000
+//Index 7==0b0111 => 0b1110
+//etc
+static unsigned char lookup[16] = {
+0x0, 0x8, 0x4, 0xc, 0x2, 0xa, 0x6, 0xe,
+0x1, 0x9, 0x5, 0xd, 0x3, 0xb, 0x7, 0xf, };
+
+uint8_t reverse(uint8_t n) {
+   // Reverse the top and bottom nibble then swap them.
+   return (lookup[n&0b1111] << 4) | lookup[n>>4];
+}
+
+// Detailed breakdown of the math
+//  + lookup reverse of bottom nibble
+//  |       + grab bottom nibble
+//  |       |        + move bottom result into top nibble
+//  |       |        |     + combine the bottom and top results 
+//  |       |        |     | + lookup reverse of top nibble
+//  |       |        |     | |       + grab top nibble
+//  V       V        V     V V       V
+// (lookup[n&0b1111] << 4) | lookup[n>>4]
+
+unsigned char rever2se(unsigned char b) 
+{
+  b = (b & 0xF0) >> 4 | (b & 0x0F) << 4;
+  b = (b & 0xCC) >> 2 | (b & 0x33) << 2;
+  b = (b & 0xAA) >> 1 | (b & 0x55) << 1;
+  return b;
+}
+
+unsigned char rever1se(unsigned char b) {
+   b = (b & 0b11110000) >> 4 | (b & 0b00001111) << 4;
+   b = (b & 0b11001100) >> 2 | (b & 0b00110011) << 2;
+   b = (b & 0b10101010) >> 1 | (b & 0b01010101) << 1;
+   return b;
+}
+
+
+
 #endif // __MAIN_H__

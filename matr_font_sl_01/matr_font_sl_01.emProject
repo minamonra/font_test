@@ -63,6 +63,7 @@
       <file file_name="Arial_round_16x24.h" />
       <file file_name="consolas_18_font.h" />
       <file file_name="consolas_22_font.h" />
+      <file file_name="gost_type_a_18_font.h" />
       <file file_name="lcd7735sl.c" />
       <file file_name="lcd7735sl.h" />
       <file file_name="main.c" />
