@@ -61,6 +61,7 @@
     <folder Name="Source Files">
       <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
       <file file_name="Arial_round_16x24.h" />
+      <file file_name="consolas_18_font.h" />
       <file file_name="consolas_22_font.h" />
       <file file_name="lcd7735sl.c" />
       <file file_name="lcd7735sl.h" />
