@@ -22,7 +22,7 @@ int main(void)
   //unsigned char x = 0, width = 16, height = 24, lenght = 48;// SixteenSegment16x24 Arial_round_16x24
   //unsigned char x =32, width = 15, height = 26, lenght = 52;  // consolas 22
   //unsigned char x =32, width = 18, height = 34, lenght = 102;  // consolas 22
-  unsigned char x =32, width = 17, height = 23, lenght = 69;  // consolas 22
+  unsigned char x =0, width = 17, height = 23, lenght = 69;  // consolas 22
   unsigned char X1=8, Y1=8, W1=24;
   
   //const unsigned char *Font = SixteenSegment16x24;
@@ -67,7 +67,7 @@ int main(void)
 
  
       count = ttms;
-      x++; if (x > 254) x = 0;
+      x++; if (x > 222) x = 0;
     }
   } while (1); // main do
 } // main
